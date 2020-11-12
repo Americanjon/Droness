@@ -59,15 +59,12 @@ try:
         sendmsg('command', 0)
         sendmsg('takeoff')
 
-   # make a square
-        sendmsg('Forward 100')
-        sendmsg('ccw 90')
-        sendmsg('Forward 100')
-        sendmsg('ccw 90')
-        sendmsg('Forward 100')
-        sendmsg('ccw 90')
-        sendmsg('Forward 100')
-        sendmsg('ccw 90')
+   # make a square within a four loop
+        for i in range(4):
+            sendmsg('Forward 100')
+            sendmsg('ccw 90')
+
+
         sendmsg('land')
 
         print('\nGreat Flight!!!')
