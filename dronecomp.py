@@ -43,19 +43,42 @@ recvThread.start()
 
 # CREATE FUNCTIONS HERE....
 
-# drones mission for hoop 1st
-def firsthoop():
+# Drone mission through first hoop
 
-# series of flips 2nd
-def secondhoop():
+def hoop1():
+    sendmsg("up 60")
 
-# drones mission for hoop 3rd
-def thirdhoopyaw():
+    sendmsg("forward 170")
 
 
+# Drone mission through second hoop
 
-# drones mission for hoop 4th
-def fourthHoop():
+def hoop2():
+    sendmsg("down 10")
+
+    sendmsg("forward 50")
+
+
+# Drone mission through third hoop
+
+def hoop3():
+    sendmsg("ccw 90")
+
+    sendmsg("forward 130")
+
+    sendmsg("ccw 90")
+
+    sendmsg("forward 50")
+
+
+# drone mission through fourth hoop.
+
+def hoop4():
+    sendmsg("forward 170")
+
+    sendmsg("ccw 90")
+
+    sendmsg("forward 130")
 
 
 
@@ -66,25 +89,35 @@ print("\n****CHECK YOUR TELLO WIFI ADDRESS****")
 print("\n****CHECK SURROUNDING AREA BEFORE FLIGHT****")
 ready = input('\nAre you ready to take flight: ')
 
-
 try:
-    if ready.lower() == 'yes':
+
+    if ready.lower() == 'yes' or ready.lower() == 'y':
         print("\nStarting Drone!\n")
 
         sendmsg('command', 0)
+
         sendmsg('takeoff')
 
-        firsthoop()
+        hoop1()
 
+        hoop2()
+
+        hoop3()
+
+        hoop4()
 
         sendmsg('land')
 
-        print('\nGreat Flight!!!')
+    print('\nGreat Flight!!!')
 
-    else:
-        print('\nMake sure you check WIFI, surroundings, co-pilot is ready, re-run program\n')
+else:
+
+    print('\nMake sure you check WIFI, surroundings, co-pilot is ready, re-run program\n')
+
 except KeyboardInterrupt:
+
     sendmsg('emergency')
 
 breakr = True
+
 sock.close()
